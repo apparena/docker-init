@@ -17,9 +17,9 @@ services:
       - "9000"
     volumes:
       - .:/var/www/html:rw
-      #- modules_node:/var/www/html/node_modules
-      #- modules_composer:/var/www/html/vendor
-      #- modules_bower:/var/www/html/public/js/bower_component
+      - modules_node:/var/www/html/node_modules
+      - modules_composer:/var/www/html/vendor
+      - modules_bower:/var/www/html/public/js/bower_component
       #- ./build/docker/php.ini:/usr/local/etc/php/php.ini
       #- ./build/docker/xdebug.ini:/usr/local/etc/php/xdebug.ini
       #- ./build/docker/apache-vhost.conf:/etc/apache2/sites-available/000-default.conf

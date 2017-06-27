@@ -60,7 +60,20 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Dev dependecies
-COPY ./build/docker/xdebug.ini /etc/php/7.1/mods-available/xdebug.ini
+RUN curl -fsSL 'https://xdebug.org/files/xdebug-2.5.5.tgz' -o xdebug.tar.gz \
+        && mkdir -p xdebug \
+        && tar -xf xdebug.tar.gz -C xdebug --strip-components=1 \
+        && rm xdebug.tar.gz \
+        && ( \
+        cd xdebug \
+        && phpize \
+        && ./configure --enable-xdebug \
+        && make -j$(nproc) \
+        && make install \
+        ) \
+        && rm -r xdebug \
+        && docker-php-ext-enable xdebug
+COPY ./build/docker/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 RUN su -c "gem install sass"
 
 # Apache configuration
