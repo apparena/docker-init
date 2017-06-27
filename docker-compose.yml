@@ -1,0 +1,50 @@
+version: '3.1'
+
+services:
+
+  # Application container
+  contest:
+    image: xdebug-web
+    build:
+      context: .
+      dockerfile: ./build/docker/Dockerfile
+    container_name: container-xdebug
+    env_file: ./build/docker/env
+    #command: npm run build:productionDeployment
+    ports:
+      - "80:80"
+    expose:
+      - "9000"
+    volumes:
+      - .:/var/www/html:rw
+      #- modules_node:/var/www/html/node_modules
+      #- modules_composer:/var/www/html/vendor
+      #- modules_bower:/var/www/html/public/js/bower_component
+      #- ./build/docker/php.ini:/usr/local/etc/php/php.ini
+      #- ./build/docker/xdebug.ini:/usr/local/etc/php/xdebug.ini
+      #- ./build/docker/apache-vhost.conf:/etc/apache2/sites-available/000-default.conf
+    depends_on:
+      - mysql
+
+  # Database container incl. init script for local development
+  mysql:
+    image: mysql:5.7.18
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./build/mysql:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: contest
+
+volumes:
+  mysql-data:
+  modules_node:
+  modules_composer:
+  modules_bower:
+
+#secrets:
+#  psql-pw:
+#    external: true

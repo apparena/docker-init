@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+
+  # Application container
+  contest:
+    image: contest-3.4-web
+    build:
+      context: .
+      dockerfile: ./build/docker/Dockerfile
+      args:
+        - INSTALL_XDEBUG=false
+        - INSTALL_SASS=false
+    container_name: container-contest-3.4-production
+    #command: npm run build:productionDeployment
+    ports:
+      - "80:80"
+    volumes:
+      - ./build/docker/php.ini:/usr/local/etc/php/php.ini
+      - ./build/docker/apache-vhost.conf:/etc/apache2/sites-available/000-default.conf
+    env_file: build/docker/env

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "main",
+    "image": "134856371062.dkr.ecr.eu-central-1.amazonaws.com/contest:VERSION",
+    "memory": 128,
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "protocol": "tcp"
+      }
+    ],
+    "essential": true,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "eu-central-1",
+        "awslogs-group": "ecs-cluster-LogGroup-N3SH256ED3IJ",
+        "awslogs-stream-prefix": "contest"
+      }
+    }
+  }
+]
