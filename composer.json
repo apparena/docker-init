@@ -1,0 +1,47 @@
+{
+  "require": {
+    "adodb/adodb-php": "v5.19",
+    "app-arena/php-sdk": "^2.2",
+    "aws/aws-sdk-php": "^3.19",
+    "clue/redis-react": "v0.5.1",
+    "doctrine/orm": "~2.5",
+    "ext-curl": "*",
+    "guzzlehttp/guzzle": "~6.0",
+    "illuminate/database": "v5.2.45",
+    "jamiecressey/slim-handlebars-view": "^0.0.2",
+    "mandrill/mandrill": "^1.0",
+    "monolog/monolog": "^1.13",
+    "mustache/mustache": "v2.8.0",
+    "oyejorge/less.php": "v1.7.0.3",
+    "pelago/emogrifier": "v0.1.1",
+    "php": ">=5.6",
+    "phpfastcache/phpfastcache": "^5.0",
+    "phpmailer/phpmailer": "^5.2",
+    "phpoffice/phpexcel": "1.8.0",
+    "predis/predis": "v1.0.1",
+    "react/react": "v0.4.2",
+    "respect/validation": "^1.1",
+    "slim/csrf": "^0.7.0",
+    "slim/flash": "^0.1.0",
+    "slim/slim": "^3.0",
+    "slim/twig-view": "2.0",
+    "symfony/expression-language": "^v3.2",
+    "symfony/http-foundation": "^3.3.2",
+    "xamin/handlebars.php": "^v0.10",
+    "srlabs/eloquent-sti": "^2.0",
+    "zendframework/zend-stdlib": "^3.1",
+    "gilbitron/easycsrf": "^1.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "App\\": "source/",
+      "HTMLPurifier": "v1/source/lib/HTMLPurifier"
+    },
+    "psr-4": {
+      "Predis\\Async\\": "v1/source/lib/predis-async/src"
+    },
+    "files": [
+      "v1/source/lib/HTMLPurifier/HTMLPurifier.composer.php"
+    ]
+  }
+}
